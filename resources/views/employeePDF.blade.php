@@ -28,7 +28,7 @@
                 <td align="center">{{$data->day}}</td>
                 <td align="center">{{$data->employee_id}}</td>
                 <td align="center">{{$data->employee_name}}</td>
-                <td align="center">{{$data->Department}}</td>
+                <td align="center">{{$data->department}}</td>
                 <td align="center">
                   @if($data->first_in_time > $data->last_out_time)
                     <span style="background-color: red;">

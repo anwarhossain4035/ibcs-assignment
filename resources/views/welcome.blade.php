@@ -51,27 +51,39 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($alldata as $data )
-            <tr>
-                <td>{{$data->month}}</td>
-                <td>{{$data->date}}</td>
-                <td>{{$data->day}}</td>
-                <td>{{$data->employee_id}}</td>
-                <td>{{$data->employee_name}}</td>
-                <td>{{$data->Department}}</td>
-                @if($data->first_in_time > $data->last_out_time)
-                <td style="background-color: red; color:white">
-                    {{$data->first_in_time}}
-                </td>
-                @endif
+            @foreach ($employeeList as $employee )
+            @if ($employee->first_in_time > $inTime)
+            <tr style="background-color: red; color:#e2e8f0">
+                <td>{{$employee->month}}</td>
+                <td>{{$employee->date}}</td>
+                <td>{{$employee->day}}</td>
+                <td>{{$employee->employee_id}}</td>
+                <td>{{$employee->employee_name}}</td>
+                <td>{{$employee->department}}</td>
+              
+                <td >{{$employee->first_in_time}}  </td>
 
-                @if($data->last_out_time < $data->first_in_time)
-                <td style="background-color: yellow;">
-                    {{$data->last_out_time}}
-                </td>
-                @endif
-                <td>{{$data->hours_of_work}}</td>
+                <td> {{$employee->last_out_time}} </td>
+              
+                <td>{{$employee->hours_of_work}}</td>
             </tr>
+            @else
+            <tr style="background-color: Yellow;">
+                <td>{{$employee->month}}</td>
+                <td>{{$employee->date}}</td>
+                <td>{{$employee->day}}</td>
+                <td>{{$employee->employee_id}}</td>
+                <td>{{$employee->employee_name}}</td>
+                <td>{{$employee->department}}</td>
+              
+                <td >{{$employee->first_in_time}}  </td>
+
+                <td> {{$employee->last_out_time}} </td>
+              
+                <td>{{$employee->hours_of_work}}</td>
+            </tr>
+            @endif
+           
             @endforeach
           
     
@@ -97,7 +109,7 @@
     <script>
         $(document).ready(function () {
     $('#example').DataTable();
-});
+  });
         
     </script>
 

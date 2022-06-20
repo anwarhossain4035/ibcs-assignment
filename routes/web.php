@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::post('/upload',[EmployeeController::class,'fileUpload'])->name('upload');
-Route::get('/',[EmployeeController::class,'index'])->name('index');
+Route::get('/',[EmployeeController::class,'employeeList'])->name('index');
 Route::get('/pdf',[EmployeeController::class,'generatePdf'])->name('pdf');
