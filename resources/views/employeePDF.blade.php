@@ -21,30 +21,39 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($allData as $data )
-            <tr>
-                <td align="center">{{$data->month}}</td>
-                <td align="center">{{$data->date}}</td>
-                <td align="center">{{$data->day}}</td>
-                <td align="center">{{$data->employee_id}}</td>
-                <td align="center">{{$data->employee_name}}</td>
-                <td align="center">{{$data->department}}</td>
-                <td align="center">
-                  @if($data->first_in_time > $data->last_out_time)
-                    <span style="background-color: red;">
-                    {{$data->first_in_time}}
-                    </span>
-                  @endif
-                </td>
-                <td align="center">
-                @if($data->first_in_time > $data->last_out_time)
-                    <span style="background-color: yellow;">
-                    {{$data->first_in_time}}
-                    </span>
-                  @endif
-                </td>
-                <td align="center">{{$data->hours_of_work}}</td>
+        @foreach ($employeeList as $employee )
+            @if ($employee->first_in_time > $inTime)
+            <tr style="background-color: red; color:#e2e8f0">
+                <td>{{$employee->month}}</td>
+                <td>{{$employee->date}}</td>
+                <td>{{$employee->day}}</td>
+                <td>{{$employee->employee_id}}</td>
+                <td>{{$employee->employee_name}}</td>
+                <td>{{$employee->department}}</td>
+              
+                <td >{{$employee->first_in_time}}  </td>
+
+                <td> {{$employee->last_out_time}} </td>
+              
+                <td>{{$employee->hours_of_work}}</td>
             </tr>
+            @else
+            <tr style="background-color: Yellow;">
+                <td>{{$employee->month}}</td>
+                <td>{{$employee->date}}</td>
+                <td>{{$employee->day}}</td>
+                <td>{{$employee->employee_id}}</td>
+                <td>{{$employee->employee_name}}</td>
+                <td>{{$employee->department}}</td>
+              
+                <td >{{$employee->first_in_time}}  </td>
+
+                <td> {{$employee->last_out_time}} </td>
+              
+                <td>{{$employee->hours_of_work}}</td>
+            </tr>
+            @endif
+           
             @endforeach
           
   

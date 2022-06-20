@@ -50,9 +50,9 @@ class EmployeeController extends Controller
     // $mpdf->autoLangToFont = true;
     // $mpdf->WriteHTML($allData);
     // $mpdf->Output();
-
-    $allData=Employee::all();
-       $pdf = PDF::loadView('employeePDF',compact('allData'));
+    $inTime='10:00';
+    $employeeList=Employee::all();
+       $pdf = PDF::loadView('employeePDF',compact('employeeList','inTime'));
   
        return $pdf->stream();
    }
